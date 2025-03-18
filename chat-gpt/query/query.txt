@@ -1,0 +1,124 @@
+Given a sentence, predict the target object.
+The sentence is about a character doing some kind of action. Assume that the character in the sentence is in a room with some furniture. The target object is the furniture that the character in the given sentence is interacting with. If the sentence does not contain any furniture or you think there is no target object, please answer none.
+
+The types of furniture that are expected to be in the room are as the following list:
+wall
+floor
+chair
+door
+table
+picture
+cabinet
+cushion
+window
+sofa
+bed
+curtain
+chest of drawers
+plant
+sink
+stairs
+ceiling
+toilet
+stool
+towel
+mirror
+tv monitor
+shower
+column
+bathtub
+counter
+fireplace
+lighting
+beam
+railing
+shelving
+blinds
+gym equipment
+seating
+board panel
+furniture
+appliances
+clothes
+
+Basically, furniture and objects other than this list will not be target objects. However, synonyms of these furniture or furniture with similar uses are target objects. e.g. dest(table), rug(floor), whiteboard(board panel). In that case, instead of answering with the word in the sentence, answer with the word in the list.
+
+The format for the input sentence is as follows:
+The sentence is: [SENTENCE]
+
+Your response needs to follow the format:
+"Answer: ..." where '...' is the sentence you generated. 
+
+For example, 
+'''
+INPUT:
+The sentence is: a person sits on a sofa.
+OUTPUT:
+Answer: sofa
+
+INPUT:
+The sentence is: He puts something on the table.
+OUTPUT:
+Answer: table
+
+INPUT:
+The sentence is: lie down on the floor.
+OUTPUT:
+Answer: floor
+
+INPUT:
+The sentence is: a person jogs forward slightly towards the right.
+OUTPUT:
+Answer: none
+
+INPUT:
+The sentence is: a person is bending down to wipe.
+OUTPUT:
+Answer: none
+
+INPUT:
+The sentence is: person takes a step to their left and sits down on a chair then gets back up
+OUTPUT:
+Answer: chair
+
+INPUT:
+The sentence is: a person opened the wardrobe.
+OUTPUT:
+Answer: chest of drawers
+
+INPUT:
+The sentence is: He stores it in the cupboard.
+OUTPUT:
+Answer: cabinet
+
+INPUT:
+The sentence is: hang a picture on the wall
+OUTPUT:
+Answer: wall
+
+INPUT:
+The sentence is: the person sits on the chair between the bed and the sink.
+OUTPUT:
+Answer: chair
+
+INPUT:
+The sentence is: He touches the mirror next to the TV monitor.
+OUTPUT:
+Answer: mirror
+
+INPUT:
+The sentence is: a man is playing piano.
+OUTPUT:
+Answer: none
+
+INPUT:
+The sentence is: She put the book she finished reading on the bookshelf.
+OUTPUT:
+Answer: shelving
+
+INPUT:
+The sentence is: The teacher is writing on the whiteboard.
+OUTPUT:
+Answer: board panel
+'''
+Strictly adhere to the output format I defined above. 

@@ -1,0 +1,159 @@
+Based on the final posture of the following actions in the text, predict the furniture that the hands, feet, and hips are likely to contact. If there are no objects that seem to be in contact, please return "none." The answer should be one of the furniture types listed below, and any other objects should be labeled as "none." Ensure to find the most appropriate furniture from this list based on affordances. If no similar furniture is listed, answer "none".
+
+Furniture list:
+
+wall
+floor
+chair
+door
+table
+picture
+cabinet
+cushion
+window
+sofa
+bed
+curtain
+chest of drawers
+plant
+sink
+stairs
+ceiling
+toilet
+stool
+towel
+mirror
+TV monitor
+shower
+column
+bathtub
+counter
+fireplace
+lighting
+beam
+railing
+shelving
+blinds
+gym equipment
+seating
+board panel
+furniture
+appliances
+clothes
+
+The format for the input sentence is as follows:
+The sentence is: [SENTENCE]
+
+Your response needs to follow the format:
+"Hand: ...
+Feet: ...
+Hip: ...": ..." where '...' is the furniture you predicted.
+
+For example, 
+'''
+INPUT:
+The sentence is: a person sits on a chair.
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: chair
+
+INPUT:
+The sentence is: a man walks to a bed and lies down on it.
+OUTPUT:
+Hand: none
+Feet: bed
+Hip: bed
+
+INPUT:
+The sentence is: a man puts something on the desk
+OUTPUT:
+Hand: table
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: he finished reading a book and put it on the bookshelf.
+OUTPUT:
+Hand: shelving
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: a person is playing piano.
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: chair
+
+INPUT:
+The sentence is: lie down on the floor.
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: floor
+
+INPUT:
+The sentence is: a person jogs forward slightly towards the right.
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: a person is bending down to wipe.
+OUTPUT:
+Hand: floor
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: person takes a step to their left and sits down on a chair then gets back up
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: chair
+
+INPUT:
+The sentence is: a person opened the wardrobe.
+OUTPUT:
+Hand: chest of drawers
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: He stores it in the cupboard.
+OUTPUT:
+Hand: cabinet
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: hang a picture on the wall
+OUTPUT:
+Hand: wall
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: the person sits on the chair between the bed and the sink.
+OUTPUT:
+Hand: none
+Feet: floor
+Hip: chair
+
+INPUT:
+The sentence is: He touches the mirror next to the TV monitor.
+OUTPUT:
+Hand: mirror
+Feet: floor
+Hip: none
+
+INPUT:
+The sentence is: The teacher is writing on the whiteboard.
+OUTPUT:
+Hand: board panel
+Feet: floor
+Hip: none
+'''
+Strictly adhere to the output format I defined above. 
