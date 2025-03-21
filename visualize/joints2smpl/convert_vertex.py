@@ -132,8 +132,8 @@ if __name__ == "__main__":
 
         aa_frame = fdata[i]['global_orient']
         R_frame = tgm.angle_axis_to_rotation_matrix(torch.Tensor(aa_frame).unsqueeze(0))[0, :3, :3]
-        t_frame = fdata[i]['transl']
-        v_frame = np.concatenate([fdata[i]['vertices'], fdata[i]['transl']])
+        t_frame = fdata[i]['transl'][None]
+        v_frame = np.concatenate([fdata[i]['vertices'], t_frame])
 
         torch_param = {}
         for key in fdata[i].keys():
@@ -145,7 +145,8 @@ if __name__ == "__main__":
         torch_param['betas'] = torch_param['betas'][:, :10]
         torch_param['left_hand_pose'] = torch_param['left_hand_pose'][:, :num_pca_comps]
         torch_param['right_hand_pose'] = torch_param['right_hand_pose'][:, :num_pca_comps]
-        torch_param['transl'][:, [0,2]] -= torch_param['transl'][:, [0,2]]
+        torch_param['transl'][[0,2]] -= torch_param['transl'][[0,2]]
+        torch_param['transl'] = torch_param['transl'][None]
 
         smplmodel.reset_params(**torch_param)
         smplmodel_output = smplmodel(return_verts=True)

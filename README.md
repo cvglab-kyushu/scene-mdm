@@ -81,6 +81,31 @@ Please run the following shell scripts in order.
 
 2. **scripts/run_fit_seq.sh**  
    Converts the motion generated in step 1 into an SMPL-X format mesh. Modify `--input_path` in the script to the path of the motion file generated in step 1.
+   <details>
+      <summary>If you are faced with <code>IndexError: index **** is out of bounds for dimension 0 with size 6890</code></summary>
+      Change line 231 and after in envs/scene-mdm/lib/site-packages/smplx/lbs.py as follows:
+      
+      ```python
+         J_transformed, A = batch_rigid_transform(rot_mats, J, parents, dtype=dtype)
+
+         # 5. Do skinning:
+         # W is N x V x (J + 1)
+         W = lbs_weights.unsqueeze(dim=0).expand([batch_size, -1, -1])
+         # (N x V x (J + 1)) x (N x (J + 1) x 16)
+         num_joints = J_regressor.shape[0]
+         T = torch.matmul(W, A.view(batch_size, num_joints, 16)) \
+            .view(batch_size, -1, 4, 4)
+
+         homogen_coord = torch.ones([batch_size, v_posed.shape[1], 1],
+                                    dtype=dtype, device=device)
+         v_posed_homo = torch.cat([v_posed, homogen_coord], dim=2)
+         v_homo = torch.matmul(T, torch.unsqueeze(v_posed_homo, dim=-1))
+
+         verts = v_homo[:, :, :3, 0]
+
+         return verts, J_transformed
+      ```
+   </details>
 
 3. **scripts/run_OS-POSA.sh**  
    Runs Path Planning and OS-POSA. Modify `--mdm_out_dir` in the script to the path of the folder generated in step 2. Also, change `--scene_name` to any desired PROX scene name.

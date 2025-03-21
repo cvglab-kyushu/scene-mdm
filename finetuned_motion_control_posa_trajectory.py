@@ -21,7 +21,6 @@ from utils.parser_util import edit_inpainting_args
 from utils.model_util import load_model_blending_and_diffusion
 from utils.rotation_conversions import quaternion_to_matrix, matrix_to_quaternion
 from utils import dist_util
-from sample.keyframe_pattern import get_kframes
 from model.cfg_sampler import wrap_model
 from data_loaders.get_data import get_dataset_loader
 from data_loaders.humanml.scripts.motion_process import recover_from_ric, convert_humanml_to_266, recover_from_ric_from_266
@@ -373,7 +372,6 @@ def main():
             # length = max_frames if args.only_text_condition else model_kwargs['y']['lengths'][sample_i]
             motion = input_motions[sample_i].transpose(2, 0, 1)[:motion_len]
             # motion = gaussian_filter1d(motion, 1, axis=0)
-            kframes = get_kframes(motion)
             save_file = 'input_motion{:02d}.mp4'.format(sample_i)
             if os.path.exists(save_file):
                 continue
