@@ -91,6 +91,9 @@ Please run the following shell scripts in order.
 5. **scripts/run_fit_seq.sh**  
    Converts the motion generated in step 4 into an SMPL-X format mesh. Modify `--input_path` in the script to the path of the motion file generated in step 4.
 
+6. **scripts/run_convert_vertex.sh**  
+   The SMPL mesh output in 5 is rigidly transformed to the coordinate system of the PROX scene. Modify the argument `--mdm_out_dir` to the path to the folder output in 5.
+
 
 ## Visualization Method
 

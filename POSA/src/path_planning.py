@@ -317,6 +317,32 @@ def is_point_in_surface(point, mesh, tolerance=1e-3):
 
     return is_on_surface
 
+def is_collinear_2d(v1, v2, v3, tolerance=1e-6):
+    """3点が2D（xy座標）で一直線上にあるかをチェック"""
+    v1, v2, v3 = np.array(v1[:2]), np.array(v2[:2]), np.array(v3[:2])  # z を無視
+    vector1 = v2 - v1
+    vector2 = v3 - v1
+    cross_product = np.cross(vector1, vector2)  # 2Dの場合はスカラー値
+    return abs(cross_product) < tolerance
+
+def remove_collinear_faces(navmesh):
+    """一直線上にあるポリゴンを削除"""
+    vertices = np.array(navmesh.vertices)  # 頂点情報
+    faces = np.array(navmesh.faces)  # 面のインデックス
+
+    valid_faces = []  # 有効なポリゴンを保存
+
+    for i, face in enumerate(faces):
+        v1, v2, v3 = vertices[face[0]], vertices[face[1]], vertices[face[2]]
+
+        if is_collinear_2d(v1, v2, v3):
+            continue  # 一直線ならスキップ（削除）
+
+        valid_faces.append(face)
+
+    new_faces = np.array(valid_faces)  # 新しい faces
+    return new_faces
+
 def path_planning_prox(key_data_path=None, navmesh_dir=None, scene_dir=None, scale_factor=0.5):
     '''
     scale_factor: Scale factor when the speed of the original motion is reflected in the path (adjustment required)
@@ -410,6 +436,8 @@ def path_planning_prox(key_data_path=None, navmesh_dir=None, scene_dir=None, sca
     else:
         normalized_vector = np.array([1,0,0])
 
+    new_faces = remove_collinear_faces(navmesh)
+    navmesh.faces = new_faces
 
     # define start position
     start = select_circle_point(navmesh, key_pos, distance_to_kf, normalized_vector, n_rot=20)
@@ -488,7 +516,8 @@ if __name__ == '__main__':
     scene_dir = "./scenes/"
     navmesh_dir = "./scenes/navmesh/"
 
-    key_data_path = "./save/humanml_only_text_condition/result_a_person_crawls_on_the_floor_and_cleans_/sample12_rep00_iter=20_affordance/pkl/MPH16/072.npy"
+    # key_data_path = "C:/Users/b19.teshima/Documents/Motion/PriorMDM/save/humanml_only_text_condition/result_a_person_walks_and_sits_on_a_chair/sample01_rep00_iter=20_new_opt_cam_t_affordance/pkl/Werkraum/051.npy"
+    key_data_path = "C:/Users/b19.teshima/Documents/Motion/PriorMDM/save/humanml_only_text_condition/result_a_person_crawls_on_the_floor_and_cleans_/sample12_rep00_iter=20_affordance/pkl/MPH16/072.npy"
 
 
     path_planning_prox(

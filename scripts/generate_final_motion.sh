@@ -1,7 +1,7 @@
 #!/bin/bash
 
 python finetuned_motion_control_posa_trajectory.py \
-    --model_path "save/humanml_traj_key_266_y/model.pt" \
+    --model_path "save/humanml_root_key_y/model.pt" \
     --dataset "humanml_266" \
     --guidance_param 1.0 \
     --num_samples 20 \

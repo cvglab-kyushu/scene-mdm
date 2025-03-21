@@ -529,6 +529,3 @@ if __name__ == '__main__':
                                                                         body_center=True,
                                                                         collage_mode='horizantal', **args_dict)
                     img_collage.save(osp.join(rendering_folder, '{}.png'.format(result_filename)))
-
-            print("Saved to ", save_pkl_path[:-4] + ".npy")
-
