@@ -59,10 +59,10 @@ cp -r ../HumanML3D/HumanML3D ./dataset/HumanML3D
 ```
 
 **Get POSA data** 
-Download the [POSA_dir.zip](https://posa.is.tue.mpg.de/) and put it to `./POSA/POSA_dir`.
+Download the [POSA_dir.zip](https://drive.google.com/file/d/1cW_mQghcV1eQ0KqcNr4Ph0IJB5u5Qtz5/view?usp=drive_link) and put it to `./POSA/POSA_dir`.
 
 **Get pretrained model**
-Download T2M model from [here]() and SceneMDM model from [here]() and put it on `./save/humanml_only_text_condition` and `./save/humanml_traj_key_266_y` respectively.
+Download T2M model from [here](https://drive.google.com/file/d/1-_0M1mhVXOOPYUbzhkpbWS8cLazC5jHn/view?usp=drive_link) and SceneMDM model from [here](https://drive.google.com/file/d/1ZXnIjc16bAHu5Na6-S-A-vyOGySsf8oc/view?usp=drive_link) and put it on `./save/humanml_only_text_condition` and `./save/humanml_traj_key_266_y` respectively.
 
 
 
