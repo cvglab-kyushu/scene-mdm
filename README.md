@@ -156,13 +156,17 @@ that our code is based on:
 
 ## Bibtex
 If you find this code useful in your research, please cite:
-<!-- 
-```
-@article{shafir2023human,
-  title={Human motion diffusion as a generative prior},
-  author={Shafir, Yonatan and Tevet, Guy and Kapon, Roy and Bermano, Amit H},
-  journal={arXiv preprint arXiv:2303.01418},
-  year={2023}
+```bash
+@ARTICLE{10967356,
+  author={Teshima, Hitoshi and Wake, Naoki and Thomas, Diego and Nakashima, Yuta and Kawasaki, Hiroshi and Ikeuchi, Katsushi},
+  journal={IEEE Access}, 
+  title={Text-Guided Diverse Scene Interaction Synthesis by Disentangling Actions From Scenes}, 
+  year={2025},
+  volume={13},
+  number={},
+  pages={73818-73830},
+  keywords={Three-dimensional displays;Trajectory;Solid modeling;Semantics;Diffusion models;Training;Noise;Natural languages;Hybrid power systems;Distance measurement;Text-to-motion generation;3D scene understanding;human-object interaction;affordance-based interaction;motion diffusion models},
+  doi={10.1109/ACCESS.2025.3562086}}
+
 }
 ```
- -->
